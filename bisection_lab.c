@@ -17,7 +17,7 @@ int main(){
     printf("ITER        a         b             c             f(a)              f(b)              f(c)\n");
     printf("------------------------------------------------------------------------------------------\n");
 
-    for(int i=1;i<=n;i++){
+    for(int i=1;i<=n;i++){//or,while(fabs(a-b)<EPSILON)
         c=(a+b)/2;
 
         printf("%d      %lf     %lf     %lf     %lf         %lf         %lf\n",i,a,b,c,f(a),f(b),f(c));    

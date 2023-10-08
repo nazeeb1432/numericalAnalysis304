@@ -1,26 +1,33 @@
 #include<stdio.h>
 #include<stdlib.h>
-# define EPSILON 0.01
+#include<math.h>
+# define EPSILON 10.0e-6
 
 double func(double x){
-    return x*x*x-x*x+2;
+    // return x*x*x-x*x+2;
+    return x*x*x+4*x*x-10;
 }
+
 
 void false_Pos(double a,double b){
 
+    int flag=0;
+
     if(func(a)*func(b)>=0){
         printf("You have not assumed right a and b\n");
-        return;
+        exit(0);
     }
 
     double c;
 
-    while((b-a)>=EPSILON){
+    while(fabs(b-a)>=EPSILON){
         
     c = (a*func(b) - b*func(a))/ (func(b) - func(a));
  
 
-        if(func(c)==0){
+        if(fabs(func(c))<EPSILON){
+            printf("Root: %lf",c);
+            flag=1;
             break;
         }
         else if(func(c)*func(a)<0){
@@ -30,7 +37,9 @@ void false_Pos(double a,double b){
 
     }
 
-    printf("root is %lf\n",c);
+    if(!flag) printf("no root\n");
+
+   
 
 
 }
@@ -39,6 +48,7 @@ int main(){
 
     //initial value assumed;
     double a=-200,b=300;
-    false_Pos(a,b);
+    double a1=1.25,b1=1.5;
+    false_Pos(a1,b1);
     return 0;
 }

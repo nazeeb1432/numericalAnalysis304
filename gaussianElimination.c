@@ -41,4 +41,26 @@ int main(){
             printf("%0.1lf\t",x[i][j]);
         }printf("\n");
     }
+    printf("\n");
+
+    for(int i=NMAX-1;i>0;i--){
+        pivot=x[i][i];
+        for(int j=i-1;j>=0;j--){
+             mp=x[j][i]/pivot;
+            for(int k=0;k<NMAX+1;k++){
+                x[j][k]-=mp*x[i][k];
+            }
+        }
+    }
+
+    printf("After 2:\n");
+     for(int i=0;i<NMAX;i++){
+        for(int j=0;j<NMAX+1;j++){
+            printf("%0.1lf\t",x[i][j]);
+        }printf("\n");
+    }
+    printf("\n");
+
+
+    
 }
